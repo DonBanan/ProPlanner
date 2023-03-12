@@ -1,41 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ProPlanner</title>
-    <!-- подключение стилей -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-warning">
-  <div class="container">
-    <a class="navbar-brand" href="#" style="font-weight: bold; color: black;">ProPlanner</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="" style="font-weight: bold; color: black;">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}" style="font-weight: bold; color: black;">Logout</a>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}" style="font-weight: bold; color: black;">Login</a>
-          </li>
-        {% endif %}
-      </ul>
-    </div>
-  </div>
-</nav>
+{% extends 'base.html' %}
+{% block content %}
 <div class="jumbotron text-center text-black mb-0" style="background-color: #808080 !important">
   <h1 class="display-4 font-weight-bold">Управление проектами и задачами по Scrum</h1>
   <p class="lead">ProPlanner помогает вашей команде следить за проектами, управлять задачами и улучшать процесс разработки.</p>
@@ -99,7 +63,7 @@
     </div>
   </div>
 </div>
-<footer class="bg-dark text-white">
+  <footer class="bg-dark text-white">
   <div class="container py-5">
     <div class="row">
       <div class="col-md-4">
@@ -124,4 +88,5 @@
     </div>
   </div>
 </footer>
-<body>
+
+{% endblock %}
