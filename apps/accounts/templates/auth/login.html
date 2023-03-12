@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body class="bg-warning">
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-6 col-md-8 col-sm-10 col-12">
+      <form class="border rounded p-5 bg-white" method="post">
+        {% csrf_token %}
+        <h2 class="mb-4 text-center">Вход</h2>
+        {% if form.errors %}
+        <div class="alert alert-danger">
+          {% for field, errors in form.errors.items %}
+            <p>{{ field }}: {{ errors|join:", " }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <div class="form-group">
+          <label class="{% if form.username.errors %}text-danger{% endif %}" for="{{ form.username.id_for_label }}">
+            {{ form.username.label }}
+          </label>
+          <input type="{{ form.username.type }}" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}"
+                 class="form-control {% if form.username.errors %}is-invalid{% endif %}" value="{{ form.username.value|default:'' }}"
+                 {% if form.username.is_required %}required{% endif %}>
+          <div class="invalid-feedback">
+            {{ form.username.errors|join:", " }}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="{% if form.password.errors %}text-danger{% endif %}" for="{{ form.password.id_for_label }}">
+            {{ form.password.label }}
+          </label>
+          <input type="{{ form.password.type }}" name="{{ form.password.name }}" id="{{ form.password.id_for_label }}"
+                 class="form-control {% if form.password.errors %}is-invalid{% endif %}" value="{{ form.password.value|default:'' }}"
+                 {% if form.password.is_required %}required{% endif %}>
+          <div class="invalid-feedback">
+            {{ form.password.errors|join:", " }}
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-dark btn-block">Войти</button>
+        </div>
+        <div class="text-center">
+          <a href="#">Забыли пароль?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
