@@ -4,10 +4,13 @@
 *.pyc
 __pycache__/
 local_settings.py
+settings/local.py
+settings/production.py
+
 db.sqlite3
 
 # Virtual Environment
-.env
+apps/settings/.env
 venv/
 env/
 
