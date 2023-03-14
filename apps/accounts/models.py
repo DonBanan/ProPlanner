@@ -20,7 +20,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         return '{0} {1} {2}'.format(self.last_name, self.first_name, self.middle_name)
 
     def get_short_name(self):
-        return '{0} {1} {2}'.format(self.last_name, self.first_name, self.middle_name)
+        if self.middle_name:
+            return '{0} {1}. {2}.'.format(self.last_name, self.first_name[0], self.middle_name[0])
+        else:
+            return '{0} {1}.'.format(self.last_name, self.first_name[0])
 
     def __str__(self):
         return self.email

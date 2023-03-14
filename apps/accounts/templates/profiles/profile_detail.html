@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.get_full_name }}</h5>
+          <p class="card-text">{{ user.email }}</p>
+          <a href="{% url 'profile_update' user.pk %}" class="btn btn-warning">Редактировать профиль</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Мои данные</h5>
+          <ul class="list-group">
+              <li class="list-group-item">Фамилия: {{ user.last_name }}</li>
+              <li class="list-group-item">Имя: {{ user.first_name }}</li>
+            <li class="list-group-item">Отчество: {{ user.middle_name }}</li>
+            <li class="list-group-item">Дата последнего входа: {{ user.last_login|date:"d-m-Y H:i" }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
